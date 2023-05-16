@@ -1,5 +1,4 @@
 package com.aston.componentsystem.model;
-
 import jakarta.persistence.*;
 
 @Entity

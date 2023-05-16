@@ -1,13 +1,13 @@
 package com.aston.componentsystem.model;
-
 import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 public class Balance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    private Long balance;
+    private BigDecimal balance;
     @Column(name = "flight_id")
     private Flight flightId;
     @Column(name = "component_id",nullable = false)
@@ -24,11 +24,11 @@ public class Balance {
         this.id = id;
     }
 
-    public Long getBalance() {
+    public BigDecimal getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(BigDecimal balance) {
         this.balance = balance;
     }
 

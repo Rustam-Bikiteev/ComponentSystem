@@ -1,7 +1,5 @@
 package com.aston.componentsystem.model;
-
 import jakarta.persistence.*;
-
 import java.util.Date;
 
 @Entity
