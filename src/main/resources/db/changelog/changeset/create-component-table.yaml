@@ -1,0 +1,44 @@
+databaseChangeLog:
+  - changeSet:
+      id: COMP-23-create-component
+      author: rustam.bikiteev@gmail.com
+      changes:
+        - createTable:
+            tableName: component
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: price
+                  type: numeric
+                  constraints:
+                    nullable: false
+              - column:
+                  name: status
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: life_time
+                  type: integer
+                  constraints:
+                    nullable: false
+              - column:
+                  name: manufacture_date
+                  type: date
+                  constraints:
+                    nullable: false
+
