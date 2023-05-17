@@ -12,7 +12,7 @@ public class Aircraft {
     private String regNumber;
     private String description;
     private String model;
-    private boolean status;
+    private boolean isOperating;
 
     public Aircraft() {
     }
@@ -57,11 +57,11 @@ public class Aircraft {
         this.model = model;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isOperating() {
+        return isOperating;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setOperating(boolean operating) {
+        isOperating = operating;
     }
 }
