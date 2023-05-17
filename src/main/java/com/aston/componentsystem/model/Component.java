@@ -2,6 +2,7 @@ package com.aston.componentsystem.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Component {
@@ -18,8 +19,16 @@ public class Component {
     private int lifeTime;
     @Column(name = "manufacture_date")
     private Date manufactureDate;
-    @Column(name = "aircraft_id")
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "componentId")
+    private List<WorkCard> workCard;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "warehouse",nullable = false)
+    private Warehouse warehouse;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "componentId")
+    private List<Balance> balances;
 
     public Component() {
 
@@ -87,5 +96,28 @@ public class Component {
 
     public void setAircraftId(Aircraft aircraftId) {
         this.aircraftId = aircraftId;
+    }
+
+    public List<WorkCard> getWorkCard() {
+        return workCard;
+    }
+
+    public void setWorkCard(List<WorkCard> workCard) {
+        this.workCard = workCard;
+    }
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
+
+    public List<Balance> getBalances() {
+        return balances;
+    }
+
+    public void setBalances(List<Balance> balances) {
+        this.balances = balances;
     }
 }

@@ -1,5 +1,6 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 public class Aircraft {
@@ -13,6 +14,12 @@ public class Aircraft {
     private String description;
     private String model;
     private boolean isOperating;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
+    private List<Component> components;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
+    private List<WorkCard> workCards;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
+    private List<Flight> flights;
 
     public Aircraft() {
     }
@@ -63,5 +70,29 @@ public class Aircraft {
 
     public void setOperating(boolean operating) {
         isOperating = operating;
+    }
+
+    public List<Component> getComponents() {
+        return components;
+    }
+
+    public void setComponents(List<Component> components) {
+        this.components = components;
+    }
+
+    public List<WorkCard> getWorkCards() {
+        return workCards;
+    }
+
+    public void setWorkCards(List<WorkCard> workCards) {
+        this.workCards = workCards;
+    }
+
+    public List<Flight> getFlights() {
+        return flights;
+    }
+
+    public void setFlights(List<Flight> flights) {
+        this.flights = flights;
     }
 }

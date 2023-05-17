@@ -1,14 +1,16 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int quantity;
-    @Column(name = "component_id",nullable = false)
-    private Component componentId;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "warehouse")
+    private List<Component> componentId;
 
     public Warehouse() {
     }
@@ -29,11 +31,11 @@ public class Warehouse {
         this.quantity = quantity;
     }
 
-    public Component getComponentId() {
+    public List<Component> getComponentId() {
         return componentId;
     }
 
-    public void setComponentId(Component componentId) {
+    public void setComponentId(List<Component> componentId) {
         this.componentId = componentId;
     }
 }

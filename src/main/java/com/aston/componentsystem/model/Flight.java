@@ -1,6 +1,7 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Flight {
@@ -12,8 +13,11 @@ public class Flight {
     @Column(name = "rate_per_hour")
     private float ratePerHour;
     private Date date;
-    @Column(name = "aircraft_id",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "flightId")
+    private List<Balance> balances;
 
     public Flight() {
     }
@@ -56,5 +60,13 @@ public class Flight {
 
     public void setAircraftId(Aircraft aircraftId) {
         this.aircraftId = aircraftId;
+    }
+
+    public List<Balance> getBalances() {
+        return balances;
+    }
+
+    public void setBalances(List<Balance> balances) {
+        this.balances = balances;
     }
 }

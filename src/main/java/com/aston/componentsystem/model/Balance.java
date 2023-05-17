@@ -8,9 +8,11 @@ public class Balance {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private BigDecimal balance;
-    @Column(name = "flight_id")
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "flight_id",nullable = false)
     private Flight flightId;
-    @Column(name = "component_id",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "component_id",nullable = false)
     private Component componentId;
 
     public Balance() {

@@ -12,9 +12,11 @@ public class WorkCard {
     @Column(name = "replacement_date",nullable = false)
     private Date replacementDate;
     private boolean status;
-    @Column(name = "aircraft_id",nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
-    @Column(name = "component_id",nullable = false)
+   @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+   @JoinColumn(name = "component_id",nullable = false)
     private Component componentId;
 
     public WorkCard() {
