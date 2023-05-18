@@ -1,5 +1,8 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.util.Date;
 
 @Entity
@@ -12,8 +15,15 @@ public class Flight {
     @Column(name = "rate_per_hour")
     private float ratePerHour;
     private Date date;
-    @Column(name = "aircraft_id",nullable = false)
+    @JdbcTypeCode(SqlTypes.JSON)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aircraft_id", nullable = false)
     private Aircraft aircraftId;
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "flight_id", nullable = false)
+    private Flight flightId;
 
     public Flight() {
     }
@@ -56,5 +66,13 @@ public class Flight {
 
     public void setAircraftId(Aircraft aircraftId) {
         this.aircraftId = aircraftId;
+    }
+
+    public Flight getFlightId() {
+        return flightId;
+    }
+
+    public void setFlightId(Flight flightId) {
+        this.flightId = flightId;
     }
 }

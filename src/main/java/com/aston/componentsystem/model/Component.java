@@ -1,5 +1,8 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,11 +21,21 @@ public class Component {
     private int lifeTime;
     @Column(name = "manufacture_date")
     private Date manufactureDate;
-    @Column(name = "aircraft_id")
+
+    @JdbcTypeCode(SqlTypes.JSON)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aircraft_id", nullable = false)
     private Aircraft aircraftId;
 
-    public Component() {
+    @JdbcTypeCode(SqlTypes.JSON)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "component_id", nullable = false)
+    private Component componentId;
 
+    @OneToOne(mappedBy = "componentId")
+    private WorkCard workCard;
+
+    public Component() {
     }
 
     public int getId() {
@@ -81,11 +94,31 @@ public class Component {
         this.manufactureDate = manufactureDate;
     }
 
-    public Aircraft getAircraftId() {
+    public Aircraft getAircraftid() {
         return aircraftId;
     }
 
     public void setAircraftId(Aircraft aircraftId) {
         this.aircraftId = aircraftId;
+    }
+
+    public Aircraft getAircraftId() {
+        return aircraftId;
+    }
+
+    public Component getComponentId() {
+        return componentId;
+    }
+
+    public void setComponentId(Component componentId) {
+        this.componentId = componentId;
+    }
+
+    public WorkCard getWorkCard() {
+        return workCard;
+    }
+
+    public void setWorkCard(WorkCard workCard) {
+        this.workCard = workCard;
     }
 }

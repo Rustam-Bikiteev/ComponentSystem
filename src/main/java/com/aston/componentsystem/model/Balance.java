@@ -1,6 +1,7 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 public class Balance {
@@ -9,9 +10,11 @@ public class Balance {
     private int id;
     private BigDecimal balance;
     @Column(name = "flight_id")
-    private Flight flightId;
-    @Column(name = "component_id",nullable = false)
-    private Component componentId;
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Flight> flights;
+    @Column(name = "component_id")
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Component> components;
 
     public Balance() {
     }
@@ -32,19 +35,19 @@ public class Balance {
         this.balance = balance;
     }
 
-    public Flight getFlightId() {
-        return flightId;
+    public Set<Flight> getFlights() {
+        return flights;
     }
 
-    public void setFlightId(Flight flightId) {
-        this.flightId = flightId;
+    public void setFlights(Set<Flight> flights) {
+        this.flights = flights;
     }
 
-    public Component getComponentId() {
-        return componentId;
+    public Set<Component> getComponents() {
+        return components;
     }
 
-    public void setComponentId(Component componentId) {
-        this.componentId = componentId;
+    public void setComponents(Set<Component> components) {
+        this.components = components;
     }
 }

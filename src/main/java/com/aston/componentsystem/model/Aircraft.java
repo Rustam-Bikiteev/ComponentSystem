@@ -1,6 +1,9 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
 
+
+import java.util.Set;
+
 @Entity
 public class Aircraft {
     @Id
@@ -13,6 +16,10 @@ public class Aircraft {
     private String description;
     private String model;
     private boolean isOperating;
+    @OneToMany(mappedBy = "aircraftId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Component> components;
+    @OneToOne(mappedBy = "aircraftId")
+    private WorkCard workCard;
 
     public Aircraft() {
     }
@@ -63,5 +70,21 @@ public class Aircraft {
 
     public void setOperating(boolean operating) {
         isOperating = operating;
+    }
+
+    public Set<Component> getComponents() {
+        return components;
+    }
+
+    public void setComponents(Set<Component> components) {
+        this.components = components;
+    }
+
+    public WorkCard getWorkCard() {
+        return workCard;
+    }
+
+    public void setWorkCard(WorkCard workCard) {
+        this.workCard = workCard;
     }
 }

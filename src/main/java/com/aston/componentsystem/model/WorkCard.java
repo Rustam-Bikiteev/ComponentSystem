@@ -12,9 +12,13 @@ public class WorkCard {
     @Column(name = "replacement_date",nullable = false)
     private Date replacementDate;
     private boolean status;
-    @Column(name = "aircraft_id",nullable = false)
+    @PrimaryKeyJoinColumn(name = "aircraft_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private Aircraft aircraftId;
-    @Column(name = "component_id",nullable = false)
+    @PrimaryKeyJoinColumn(name = "component_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "id")
     private Component componentId;
 
     public WorkCard() {

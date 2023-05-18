@@ -1,6 +1,8 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 public class Warehouse {
     @Id
@@ -8,7 +10,8 @@ public class Warehouse {
     private int id;
     private int quantity;
     @Column(name = "component_id",nullable = false)
-    private Component componentId;
+    @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Component> components;
 
     public Warehouse() {
     }
@@ -29,11 +32,11 @@ public class Warehouse {
         this.quantity = quantity;
     }
 
-    public Component getComponentId() {
-        return componentId;
+    public Set<Component> getComponents() {
+        return components;
     }
 
-    public void setComponentId(Component componentId) {
-        this.componentId = componentId;
+    public void setComponents(Set<Component> components) {
+        this.components = components;
     }
 }
