@@ -39,7 +39,9 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
                 .dispatcherTypeMatchers(HttpMethod.valueOf("/api/v1/auth/**")).permitAll()
-                .dispatcherTypeMatchers(HttpMethod.GET, DispatcherType.valueOf("/api/v1/**")).permitAll()
+                /*.dispatcherTypeMatchers(HttpMethod.GET, DispatcherType.valueOf("/api/v1/**")).permitAll()
+                .dispatcherTypeMatchers(HttpMethod.POST, DispatcherType.valueOf("/api/v1/**")).hasAuthority("ROLE_ADMIN")
+                .dispatcherTypeMatchers(HttpMethod.DELETE, DispatcherType.valueOf("/api/v1/**")).hasAuthority("ROLE_ADMIN")*/
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
