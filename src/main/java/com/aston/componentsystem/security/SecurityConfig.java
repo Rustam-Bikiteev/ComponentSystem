@@ -1,5 +1,6 @@
 package com.aston.componentsystem.security;
 
+import jakarta.servlet.DispatcherType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,8 +38,8 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                //.antMatchers("/api/v1/auth/**").permitAll()
-                //.antMatchers(HttpMethod.GET, "/api/v1/**").permitAll()
+                .dispatcherTypeMatchers(HttpMethod.valueOf("/api/v1/auth/**")).permitAll()
+                .dispatcherTypeMatchers(HttpMethod.GET, DispatcherType.valueOf("/api/v1/**")).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .httpBasic();
