@@ -1,39 +1,19 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int quantity;
-    @Column(name = "component_id",nullable = false)
-    private Component componentId;
-
-    public Warehouse() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Component getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(Component componentId) {
-        this.componentId = componentId;
-    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "warehouse")
+    private List<Component> components;
 }

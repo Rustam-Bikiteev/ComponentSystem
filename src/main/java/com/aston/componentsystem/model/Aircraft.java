@@ -1,6 +1,13 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Aircraft {
     @Id
@@ -13,55 +20,10 @@ public class Aircraft {
     private String description;
     private String model;
     private boolean isOperating;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
+    private List<Component> components;
 
-    public Aircraft() {
-    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
+    private List<Flight> flights;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(int serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
-    public String getRegNumber() {
-        return regNumber;
-    }
-
-    public void setRegNumber(String regNumber) {
-        this.regNumber = regNumber;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
-    }
-
-    public boolean isOperating() {
-        return isOperating;
-    }
-
-    public void setOperating(boolean operating) {
-        isOperating = operating;
-    }
 }
