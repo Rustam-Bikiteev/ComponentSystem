@@ -20,7 +20,16 @@ import java.util.Set;
 @NoArgsConstructor
 @SQLDelete(sql = "UPDATE users SET is_removed = true WHERE id=?")
 @Where(clause = "is_removed=false")
-public class User extends AbstractEntity  {
+public class User  {
+
+
+    @Column(name = "is_removed", nullable = false)
+    boolean isRemoved = Boolean.FALSE;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
 
     @Column(name = "login", nullable = false)

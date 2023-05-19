@@ -1,6 +1,6 @@
 package com.aston.componentsystem.security;
 
-import jakarta.servlet.DispatcherType;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,8 +37,8 @@ public class SecurityConfig {
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
-                .dispatcherTypeMatchers(HttpMethod.valueOf("/api/v1/auth/**")).permitAll()
+                .authorizeHttpRequests()
+                .requestMatchers("/api/v1/auth/**").permitAll()
                 /*.dispatcherTypeMatchers(HttpMethod.GET, DispatcherType.valueOf("/api/v1/**")).permitAll()
                 .dispatcherTypeMatchers(HttpMethod.POST, DispatcherType.valueOf("/api/v1/**")).hasAuthority("ROLE_ADMIN")
                 .dispatcherTypeMatchers(HttpMethod.DELETE, DispatcherType.valueOf("/api/v1/**")).hasAuthority("ROLE_ADMIN")*/

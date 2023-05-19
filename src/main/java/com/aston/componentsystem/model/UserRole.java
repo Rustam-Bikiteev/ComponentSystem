@@ -1,8 +1,6 @@
 package com.aston.componentsystem.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +10,15 @@ import lombok.Setter;
 @Getter
 @Entity
 @Table(name = "roles")
-public class UserRole extends AbstractEntity{
+public class UserRole {
+
+    @Column(name = "is_removed", nullable = false)
+    boolean isRemoved = Boolean.FALSE;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
     @Column(length = 60, nullable = false)
     private String name;
