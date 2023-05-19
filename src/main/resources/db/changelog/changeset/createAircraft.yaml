@@ -1,0 +1,87 @@
+databaseChangeLog:
+  - changeSet:
+      id: COMP-23/Aircraft
+      author: rustam_bikiteev
+      changes:
+        - createTable:
+            tableName: aircraft
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: serial_number
+                  type: VARCHAR(10)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: reg_number
+                  type: VARCHAR(6)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: model
+                  type: VARCHAR(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: is_operating
+                  type: boolean
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: COMP-23/addAircraft
+      author: rustam_bikiteev
+      comment: "Create Aircraft"
+      changes:
+        - insert:
+            tableName: aircraft
+            columns:
+              - column:
+                  name: serial_number
+                  value: 145896
+              - column:
+                  name: reg_number
+                  value: "VQ-SDF"
+              - column:
+                  name: description
+                  value: "some description"
+              - column:
+                  name: model
+                  value: "Boeing 737-800"
+              - column:
+                  name: is_operating
+                  value: true
+        - insert:
+            tableName: aircraft
+            columns:
+              - column:
+                  name: serial_number
+                  value: 123475
+              - column:
+                  name: reg_number
+                  value: "VQ-LKJ"
+              - column:
+                  name: description
+                  value: "some description"
+              - column:
+                  name: model
+                  value: "Boeing 737-800"
+              - column:
+                  name: is_operating
+                  value: true
+
+      rollback:
+        - delete:
+            tableName: roles
+            where: name in ('Logistic', 'Planning', 'Service')
