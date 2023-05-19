@@ -49,7 +49,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: serial_number
-                  value: 145896
+                  value: 897412
               - column:
                   name: reg_number
                   value: "VQ-SDF"

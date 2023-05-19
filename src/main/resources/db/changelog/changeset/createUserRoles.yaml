@@ -28,3 +28,45 @@ databaseChangeLog:
                   referencedTableName: roles
                   referencedColumnNames: id
                   constraintName: fk_user_roles_on_role
+
+  - changeSet:
+      id: COMP-23/addUserRole
+      author: rustam_bikiteev
+      comment: "Create User roles"
+      changes:
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: "1"
+              - column:
+                  name: role_id
+                  value: "1"
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: "1"
+              - column:
+                  name: role_id
+                  value: "2"
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: "2"
+              - column:
+                  name: role_id
+                  value: "2"
+        - insert:
+            tableName: user_roles
+            columns:
+              - column:
+                  name: user_id
+                  value: "2"
+              - column:
+                  name: role_id
+                  value: "3"

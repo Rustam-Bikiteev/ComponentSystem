@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: COMP-23/Balance
+      author: rustam_bikiteev
+      changes:
+        - createTable:
+            tableName: balance
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: balance
+                  type: Numeric
+                  constraints:
+                    nullable: false
+
+
+  - changeSet:
+      id: COMP-23/addBalance
+      author: rustam_bikiteev
+      comment: "Create Balance"
+      changes:
+        - insert:
+            tableName: balance
+            columns:
+              - column:
+                  name: balance
+                  value: "1500000"
+
+
