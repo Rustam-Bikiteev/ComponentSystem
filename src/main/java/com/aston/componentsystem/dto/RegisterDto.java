@@ -4,18 +4,18 @@ import com.aston.componentsystem.model.UserRole;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-
+import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
 
 
 
-
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class RegisterDto {
+public class RegisterDto extends AbstractDto {
 
     @NotBlank
     private String login;
