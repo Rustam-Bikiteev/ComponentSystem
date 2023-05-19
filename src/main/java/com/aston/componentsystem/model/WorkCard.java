@@ -1,8 +1,23 @@
 package com.aston.componentsystem.model;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.CascadeType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Date;
 
-@Entity
+@AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "work_card")
 public class WorkCard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,55 +35,4 @@ public class WorkCard {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id", referencedColumnName = "id")
     private Component componentId;
-
-    public WorkCard() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getPlannedDate() {
-        return plannedDate;
-    }
-
-    public void setPlannedDate(Date plannedDate) {
-        this.plannedDate = plannedDate;
-    }
-
-    public Date getReplacementDate() {
-        return replacementDate;
-    }
-
-    public void setReplacementDate(Date replacementDate) {
-        this.replacementDate = replacementDate;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Aircraft getAircraftId() {
-        return aircraftId;
-    }
-
-    public void setAircraftId(Aircraft aircraftId) {
-        this.aircraftId = aircraftId;
-    }
-
-    public Component getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(Component componentId) {
-        this.componentId = componentId;
-    }
 }

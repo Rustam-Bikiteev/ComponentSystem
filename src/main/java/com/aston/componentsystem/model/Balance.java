@@ -1,9 +1,23 @@
 package com.aston.componentsystem.model;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
-@Entity
+
+@AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "balance")
 public class Balance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,39 +29,4 @@ public class Balance {
     @Column(name = "component_id")
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Component> components;
-
-    public Balance() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public Set<Flight> getFlights() {
-        return flights;
-    }
-
-    public void setFlights(Set<Flight> flights) {
-        this.flights = flights;
-    }
-
-    public Set<Component> getComponents() {
-        return components;
-    }
-
-    public void setComponents(Set<Component> components) {
-        this.components = components;
-    }
 }

@@ -1,9 +1,22 @@
 package com.aston.componentsystem.model;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+
 
 import java.util.Set;
 
-@Entity
+@AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "warehouse")
 public class Warehouse {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,31 +25,4 @@ public class Warehouse {
     @Column(name = "component_id",nullable = false)
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Component> components;
-
-    public Warehouse() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-
-    public Set<Component> getComponents() {
-        return components;
-    }
-
-    public void setComponents(Set<Component> components) {
-        this.components = components;
-    }
 }

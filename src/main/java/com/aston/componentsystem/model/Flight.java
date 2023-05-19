@@ -1,11 +1,24 @@
 package com.aston.componentsystem.model;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Table;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.FetchType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 
 import java.util.Date;
 
-@Entity
+@AllArgsConstructor
+@Getter
+@Setter
+@Table(name = "flight")
 public class Flight {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,55 +37,4 @@ public class Flight {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "flight_id", nullable = false)
     private Flight flightId;
-
-    public Flight() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
-    public float getRatePerHour() {
-        return ratePerHour;
-    }
-
-    public void setRatePerHour(float ratePerHour) {
-        this.ratePerHour = ratePerHour;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public Aircraft getAircraftId() {
-        return aircraftId;
-    }
-
-    public void setAircraftId(Aircraft aircraftId) {
-        this.aircraftId = aircraftId;
-    }
-
-    public Flight getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(Flight flightId) {
-        this.flightId = flightId;
-    }
 }
