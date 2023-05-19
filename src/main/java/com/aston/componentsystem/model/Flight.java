@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
-import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,8 +21,5 @@ public class Flight {
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "balances",nullable = false)
-    private List<Balance> balances;
 
 }

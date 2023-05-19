@@ -6,7 +6,6 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,8 +34,5 @@ public class Component {
     @JoinColumn(name = "warehouse",nullable = false)
     private Warehouse warehouse;
 
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "balances",nullable = false)
-    private Balance balances;
 
 }

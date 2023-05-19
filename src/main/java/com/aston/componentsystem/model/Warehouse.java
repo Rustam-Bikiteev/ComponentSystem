@@ -14,6 +14,6 @@ public class Warehouse {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private int quantity;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "warehouse")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "warehouse")
     private List<Component> components;
 }

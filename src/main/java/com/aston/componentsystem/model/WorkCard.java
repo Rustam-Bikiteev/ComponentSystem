@@ -23,7 +23,7 @@ public class WorkCard {
     @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
 
-   @OneToMany(fetch = FetchType.LAZY, mappedBy = "workCard")
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "workCard")
     private List<Component> components;
 
 }
