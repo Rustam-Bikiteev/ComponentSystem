@@ -16,7 +16,7 @@ Content-Type: application/json
 
 
 ###
-http://localhost:8081/api/v1/auth/login
+POST http://localhost:8081/api/v1/auth/login
 Content-Type: application/json
 
 {
