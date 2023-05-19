@@ -67,13 +67,13 @@ databaseChangeLog:
                   value: 03.04.2023
               - column:
                   name: status
-                  value: false
+                  value: "false"
               - column:
                   name: component_id
-                  value: 1
+                  value: "1"
               - column:
                   name: aircraft_id
-                  value: 1
+                  value: "1"
         - insert:
             tableName: work_card
             columns:
@@ -85,10 +85,10 @@ databaseChangeLog:
                   value: 03.03.2023
               - column:
                   name: status
-                  value: false
+                  value: "false"
               - column:
                   name: component_id
-                  value: 2
+                  value: "2"
               - column:
                   name: aircraft_id
-                  value: 1
+                  value: "1"

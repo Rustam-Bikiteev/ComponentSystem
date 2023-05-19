@@ -49,7 +49,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: serial_number
-                  value: 897412
+                  value: "897412"
               - column:
                   name: reg_number
                   value: "VQ-SDF"
@@ -61,13 +61,13 @@ databaseChangeLog:
                   value: "Boeing 737-800"
               - column:
                   name: is_operating
-                  value: true
+                  value: "true"
         - insert:
             tableName: aircraft
             columns:
               - column:
                   name: serial_number
-                  value: 123475
+                  value: "123475"
               - column:
                   name: reg_number
                   value: "VQ-LKJ"
@@ -79,7 +79,7 @@ databaseChangeLog:
                   value: "Boeing 737-800"
               - column:
                   name: is_operating
-                  value: true
+                  value: "true"
 
       rollback:
         - delete:
