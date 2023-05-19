@@ -41,17 +41,17 @@ databaseChangeLog:
             columns:
               - column:
                   name: quantity
-                  value: 15
+                  value: "15"
               - column:
                   name: component_id
-                  value: 1
+                  value: "1"
         - insert:
             tableName: warehouse
             columns:
               - column:
                   name: quantity
-                  value: 11
+                  value: "11"
               - column:
                   name: component_id
-                  value: 2
+                  value: "2"
 
