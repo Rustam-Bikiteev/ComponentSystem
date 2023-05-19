@@ -1,52 +1,24 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
-import java.math.BigDecimal;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.util.List;
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class Balance {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private BigDecimal balance;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "flight_id",nullable = false)
-    private Flight flightId;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "component_id",nullable = false)
-    private Component componentId;
 
-    public Balance() {
-    }
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "balances")
+    private List<Flight> flights;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "balances")
+    private List<Component> components;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public BigDecimal getBalance() {
-        return balance;
-    }
-
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
-
-    public Flight getFlightId() {
-        return flightId;
-    }
-
-    public void setFlightId(Flight flightId) {
-        this.flightId = flightId;
-    }
-
-    public Component getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(Component componentId) {
-        this.componentId = componentId;
-    }
 }

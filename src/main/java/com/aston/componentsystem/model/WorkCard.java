@@ -1,7 +1,14 @@
 package com.aston.componentsystem.model;
 import jakarta.persistence.*;
-import java.util.Date;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.Date;
+import java.util.List;
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 public class WorkCard {
     @Id
@@ -15,58 +22,8 @@ public class WorkCard {
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
-   @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-   @JoinColumn(name = "component_id",nullable = false)
-    private Component componentId;
 
-    public WorkCard() {
-    }
+   @OneToMany(fetch = FetchType.LAZY, mappedBy = "workCard")
+    private List<Component> components;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getPlannedDate() {
-        return plannedDate;
-    }
-
-    public void setPlannedDate(Date plannedDate) {
-        this.plannedDate = plannedDate;
-    }
-
-    public Date getReplacementDate() {
-        return replacementDate;
-    }
-
-    public void setReplacementDate(Date replacementDate) {
-        this.replacementDate = replacementDate;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public Aircraft getAircraftId() {
-        return aircraftId;
-    }
-
-    public void setAircraftId(Aircraft aircraftId) {
-        this.aircraftId = aircraftId;
-    }
-
-    public Component getComponentId() {
-        return componentId;
-    }
-
-    public void setComponentId(Component componentId) {
-        this.componentId = componentId;
-    }
 }
