@@ -1,15 +1,6 @@
 package com.aston.componentsystem.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,6 +16,7 @@ import java.util.Set;
 @EqualsAndHashCode(callSuper = false)
 @Data
 @Builder
+@Entity
 @AllArgsConstructor
 @Table(name = "users")
 @NoArgsConstructor
