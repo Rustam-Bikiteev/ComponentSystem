@@ -4,9 +4,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 import java.util.Optional;
-public abstract class UserRepository implements JpaRepository<User, Integer> {
 
-    public abstract Optional<User> findByLogin(String username);
+public interface UserRepository extends JpaRepository<User, Integer> {
 
-    public abstract Boolean existsByLogin(String username);
+    Optional<User> findByLogin(String username);
+
+    Boolean existsByLogin(String username);
 }
