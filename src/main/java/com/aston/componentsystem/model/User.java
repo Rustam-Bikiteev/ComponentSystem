@@ -1,9 +1,20 @@
 package com.aston.componentsystem.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import jakarta.persistence.Column;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Table;
 import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Data;
+import lombok.Builder;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
@@ -11,17 +22,15 @@ import org.hibernate.annotations.Where;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-
-
 @EqualsAndHashCode(callSuper = false)
 @Data
-@Entity
+@Builder
+@AllArgsConstructor
 @Table(name = "users")
 @NoArgsConstructor
 @SQLDelete(sql = "UPDATE users SET is_removed = true WHERE id=?")
 @Where(clause = "is_removed=false")
 public class User  {
-
 
     @Column(name = "is_removed", nullable = false)
     boolean isRemoved = Boolean.FALSE;
@@ -30,7 +39,6 @@ public class User  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-
 
     @Column(name = "login", nullable = false)
     private String login;
@@ -59,7 +67,5 @@ public class User  {
 
     @Column(name = "last_visit", nullable = false)
     private LocalDateTime lastVisit;
-
-
 
 }
