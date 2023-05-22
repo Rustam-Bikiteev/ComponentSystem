@@ -81,7 +81,7 @@ databaseChangeLog:
                   value: "5"
               - column:
                   name: manufacture_date
-                  value: 19.05.2020
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "1"
@@ -105,7 +105,7 @@ databaseChangeLog:
                   value: "3"
               - column:
                   name: manufacture_date
-                  value: 13.07.2022
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "1"
@@ -129,7 +129,7 @@ databaseChangeLog:
                   value: "1"
               - column:
                   name: manufacture_date
-                  value: 13.03.2023
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "1"
@@ -153,7 +153,7 @@ databaseChangeLog:
                   value: "5"
               - column:
                   name: manufacture_date
-                  value: 19.01.2019
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "2"
@@ -177,7 +177,7 @@ databaseChangeLog:
                   value: "15"
               - column:
                   name: manufacture_date
-                  value: 13.07.2022
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "2"
@@ -201,7 +201,7 @@ databaseChangeLog:
                   value: "10"
               - column:
                   name: manufacture_date
-                  value: 13.03.2023
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "2"

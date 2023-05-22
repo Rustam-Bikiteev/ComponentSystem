@@ -79,7 +79,7 @@ databaseChangeLog:
                   value: "Arturovich"
               - column:
                   name: last_visit
-                  value: "18.05.2023"
+                  value: 2015-05-11
         - insert:
             tableName: users
             columns:
@@ -106,7 +106,7 @@ databaseChangeLog:
                   value: "Ivanovich"
               - column:
                   name: last_visit
-                  value: "18.05.2023"
+                  value: 2015-05-11
       rollback:
         - delete:
             tableName: users
