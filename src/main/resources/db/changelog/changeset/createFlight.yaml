@@ -56,7 +56,7 @@ databaseChangeLog:
                   value: "1200"
               - column:
                   name: flight_date
-                  value: 19.05.2023
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "1"
@@ -71,7 +71,7 @@ databaseChangeLog:
                   value: "1000"
               - column:
                   name: flight_date
-                  value: 17.04.2023
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "1"
@@ -86,7 +86,7 @@ databaseChangeLog:
                   value: "700"
               - column:
                   name: flight_date
-                  value: 16.03.2023
+                  value: 2015-05-11
               - column:
                   name: aircraft_id
                   value: "2"
