@@ -57,7 +57,23 @@ databaseChangeLog:
                   name: is_removed
                   value: "false"
 
-      rollback:
-        - delete:
+        - insert:
             tableName: roles
-            where: name in ('Logistic', 'Planning', 'Service')
+            columns:
+              - column:
+                  name: name
+                  value: "ROLE_USER"
+              - column:
+                  name: is_removed
+                  value: "false"
+
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: name
+                  value: "ADMIN_USER"
+              - column:
+                  name: is_removed
+                  value: "false"
+

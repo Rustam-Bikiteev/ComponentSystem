@@ -21,6 +21,4 @@ public class UserRole {
     @Column(length = 60, nullable = false)
     private String name;
 
-    @Column(length = 60, nullable = false)
-    private String role;
 }

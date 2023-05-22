@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 
 @RestController
-@RequestMapping("/api/v1/auth/")
+@RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -33,7 +33,7 @@ public class AuthController {
     private final PasswordEncoder passwordEncoder;
     private final JwtGenerator jwtGenerator;
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
@@ -44,22 +44,23 @@ public class AuthController {
         return new ResponseEntity<>(new AuthResponseDTO(token), HttpStatus.OK);
     }
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         if (userRepository.existsByLogin(registerDto.getLogin())) {
-            return ResponseEntity.badRequest().body("Такой логин уже занят!");
+            return ResponseEntity.badRequest().body("user with this login already exists!");
         }
         User user = new User();
         user.setLogin(registerDto.getLogin());
         user.setPassword(passwordEncoder.encode(registerDto.getPassword()));
         UserRole roles = roleRepository.findByName(registerDto.getUserRole().getName())
-                .orElseThrow(() -> new RuntimeException("Роль не найдена"));
+                .orElseThrow(() -> new RuntimeException("role not found"));
         user.setRoles(Collections.singleton(roles));
         user.setFirstName(registerDto.getFirstName());
         user.setLastName(registerDto.getLastName());
         user.setSurName(registerDto.getSurName());
         user.setEmail(registerDto.getEmail());
+        user.setLastVisit(registerDto.getLast_visit());
         userRepository.save(user);
-        return ResponseEntity.ok("Пользователь успешно зарегистрирован!");
+        return ResponseEntity.ok("User has been registered successfully!");
     }
 }
