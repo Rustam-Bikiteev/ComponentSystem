@@ -61,10 +61,10 @@ databaseChangeLog:
             columns:
               - column:
                   name: planned_date
-                  value: 01.04.2023
+                  value: "01.04.2023"
               - column:
                   name: replacement_date
-                  value: 03.04.2023
+                  value: "03.04.2023"
               - column:
                   name: status
                   value: "false"
@@ -79,10 +79,10 @@ databaseChangeLog:
             columns:
               - column:
                   name: planned_date
-                  value: 02.03.2023
+                  value: "02.03.2023"
               - column:
                   name: replacement_date
-                  value: 03.03.2023
+                  value: "03.03.2023"
               - column:
                   name: status
                   value: "false"
