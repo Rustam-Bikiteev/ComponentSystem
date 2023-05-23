@@ -72,7 +72,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: name
-                  value: "ADMIN_USER"
+                  value: "ROLE_ADMIN"
               - column:
                   name: is_removed
                   value: "false"
