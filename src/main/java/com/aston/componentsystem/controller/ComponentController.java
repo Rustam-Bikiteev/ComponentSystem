@@ -6,7 +6,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +19,7 @@ public class ComponentController {
     }
 
     @GetMapping("/components/{id}")
-    public Optional<Component> getComponentById(@PathVariable int id) {
+    public Component getComponentById(@PathVariable int id) {
         return componentService.getComponentById(id);
     }
 
