@@ -1,4 +1,4 @@
-package com.aston.componentsystem.confin;
+package com.aston.componentsystem.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
