@@ -14,8 +14,8 @@ import java.util.List;
 public class Order {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private int component_quantity;
     @OneToMany
     @JoinColumn(name = "component_id")
