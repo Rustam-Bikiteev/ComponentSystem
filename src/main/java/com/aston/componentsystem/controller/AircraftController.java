@@ -2,18 +2,16 @@ package com.aston.componentsystem.controller;
 
 import com.aston.componentsystem.service.AircraftService;
 import com.aston.componentsystem.model.Aircraft;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 public class AircraftController {
 
     public final AircraftService aircraftService;
-
-    public AircraftController(AircraftService aircraftService) {
-        this.aircraftService = aircraftService;
-    }
 
     @GetMapping("/aircraft")
     public List<Aircraft> getAllAircraft() {
@@ -31,10 +29,7 @@ public class AircraftController {
     }
 
     @DeleteMapping("/aircrafts/{id}")
-    public void deleteAircraft(@PathVariable int id){
-        Aircraft aircraft = aircraftService.getAircraftById(id);
-        if (aircraft != null) {
-            aircraftService.deleteAircraft(id);
-        }
+    public void deleteAircraft(@PathVariable int id) {
+        aircraftService.deleteAircraft(id);
     }
 }
