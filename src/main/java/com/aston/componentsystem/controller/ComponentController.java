@@ -5,6 +5,7 @@ import com.aston.componentsystem.model.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ComponentController {
@@ -21,7 +22,7 @@ public class ComponentController {
     }
 
     @GetMapping("/components/{id}")
-    public Component getComponentById(@PathVariable int id) {
+    public Optional<Component> getComponentById(@PathVariable int id) {
         return componentService.getComponentById(id);
     }
 
@@ -32,10 +33,7 @@ public class ComponentController {
 
     @DeleteMapping("/component/{id}")
     public void deleteComponent(@PathVariable int id){
-        Component component = componentService.getComponentById(id);
-        if (component != null) {
             componentService.deleteComponent(id);
-        }
     }
 
 }

@@ -1,29 +1,33 @@
 package com.aston.componentsystem.service;
 
 import com.aston.componentsystem.model.Component;
+import com.aston.componentsystem.repository.ComponentRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
+@RequiredArgsConstructor
 public class ComponentService {
+
+    public final ComponentRepository componentRepository;
+
+
     public List<Component> getAllComponents() {
-        Component component = new Component();
-        List<Component> components = new ArrayList<>();
-        components.add(component);
-        return components;
+        return componentRepository.findAll();
     }
 
-    public Component getComponentById(int id) {
-        return new Component();
+    public Optional<Component> getComponentById(int id) {
+        return componentRepository.findById(id);
     }
 
     public void saveComponent(Component component){
-        System.out.println("Component has been created");
+        componentRepository.save(component);
     }
 
     public void deleteComponent(int id){
-        System.out.println("Component has been deleted");
+       componentRepository.deleteById(id);
     }
 }
