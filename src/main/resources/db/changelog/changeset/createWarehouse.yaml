@@ -1,0 +1,57 @@
+databaseChangeLog:
+  - changeSet:
+      id: COMP-23/WareHouse
+      author: rustam_bikiteev
+      changes:
+        - createTable:
+            tableName: warehouse
+            columns:
+              - column:
+                  name: id
+                  type: INTEGER
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: quantity
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - column:
+                  name: component_id
+                  type: INTEGER
+                  constraints:
+                    nullable: false
+              - addForeignKeyConstraint:
+                  baseTableName: warehouse
+                  baseColumnNames: component_id
+                  referencedTableName: component
+                  referencedColumnNames: id
+                  constraintName: fk_warehouse_on_component
+
+
+  - changeSet:
+      id: COMP-23/addWarehouse
+      author: rustam_bikiteev
+      comment: "Create Warehouse"
+      changes:
+        - insert:
+            tableName: warehouse
+            columns:
+              - column:
+                  name: quantity
+                  value: "15"
+              - column:
+                  name: component_id
+                  value: "1"
+        - insert:
+            tableName: warehouse
+            columns:
+              - column:
+                  name: quantity
+                  value: "11"
+              - column:
+                  name: component_id
+                  value: "2"
+
