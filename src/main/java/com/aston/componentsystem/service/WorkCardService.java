@@ -17,12 +17,7 @@ public class WorkCardService {
     }
 
     public List<WorkCard> getAllWorkCards() {
-        Iterable<WorkCard> workCardIterable = workCardRepository.findAll();
-        List<WorkCard> workCardList = new ArrayList<>();
-        for (WorkCard workCard : workCardIterable) {
-            workCardList.add(workCard);
-        }
-        return workCardList;
+        return workCardRepository.findAll();
     }
 
     public WorkCard getWorkCardById(int id) {

@@ -18,12 +18,7 @@ public class AircraftService {
     }
 
     public List<Aircraft> getAllAircraft() {
-        Iterable<Aircraft> aircraftIterable = aircraftRepository.findAll();
-        List<Aircraft> aircraftList = new ArrayList<>();
-        for (Aircraft aircraft : aircraftIterable) {
-            aircraftList.add(aircraft);
-        }
-        return aircraftList;
+        return aircraftRepository.findAll();
     }
 
     public Aircraft getAircraftById(int id) {

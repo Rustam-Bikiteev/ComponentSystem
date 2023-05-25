@@ -17,12 +17,7 @@ public class ComponentService {
     }
 
     public List<Component> getAllComponents() {
-        Iterable<Component> componentIterable = componentRepository.findAll();
-        List<Component> componentList = new ArrayList<>();
-        for (Component component : componentIterable) {
-            componentList.add(component);
-        }
-        return componentList;
+        return componentRepository.findAll();
     }
 
     public Component getComponentById(int id) {
