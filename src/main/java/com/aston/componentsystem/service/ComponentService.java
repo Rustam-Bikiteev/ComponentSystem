@@ -29,16 +29,7 @@ public class ComponentService {
     }
 
     public void saveComponent(Component component) {
-        Component creatingComponent = new Component();
-        creatingComponent.setName(component.getName());
-        creatingComponent.setDescription(component.getDescription());
-        creatingComponent.setPrice(component.getPrice());
-        creatingComponent.setStatus(component.isStatus());
-        creatingComponent.setLifeTime(component.getLifeTime());
-        creatingComponent.setManufactureDate(component.getManufactureDate());
-        creatingComponent.setAircraftId(component.getAircraftId());
-        creatingComponent.setWorkCard(component.getWorkCard());
-        creatingComponent.setWarehouse(component.getWarehouse());
+        componentRepository.save(component);
     }
 
     public void deleteComponent(int id) {

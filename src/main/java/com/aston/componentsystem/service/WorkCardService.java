@@ -29,12 +29,7 @@ public class WorkCardService {
     }
 
     public void saveWorkCard(WorkCard workCard) {
-        WorkCard creatingWorkCard = new WorkCard();
-        creatingWorkCard.setPlannedDate(workCard.getPlannedDate());
-        creatingWorkCard.setReplacementDate(workCard.getReplacementDate());
-        creatingWorkCard.setStatus(workCard.isStatus());
-        creatingWorkCard.setAircraftId(workCard.getAircraftId());
-        creatingWorkCard.setComponents(workCard.getComponents());
+       workCardRepository.save(workCard);
     }
 
     public void deleteWorkCard(int id) {
