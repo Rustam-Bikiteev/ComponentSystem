@@ -11,9 +11,9 @@ import java.util.List;
 @Entity
 public class Warehouse {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private int quantity;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private Integer quantity;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "warehouse")
     private List<Component> components;
 }

@@ -12,8 +12,8 @@ import java.util.List;
 @Entity
 public class WorkCard {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(name = "planned_date")
     private Date plannedDate;
     @Column(name = "replacement_date",nullable = false)

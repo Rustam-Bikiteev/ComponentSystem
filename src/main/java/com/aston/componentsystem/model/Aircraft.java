@@ -11,10 +11,10 @@ import java.util.List;
 @Entity
 public class Aircraft {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(name = "serial_number",nullable = false)
-    private int serialNumber;
+    private Integer serialNumber;
     @Column(name = "reg_number",nullable = false)
     private String regNumber;
     private String description;
