@@ -11,10 +11,10 @@ import java.util.Date;
 @Entity
 public class Flight {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(nullable = false)
-    private int duration;
+    private Integer duration;
     @Column(name = "rate_per_hour")
     private float ratePerHour;
     private Date date;

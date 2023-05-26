@@ -12,8 +12,8 @@ import java.util.Date;
 @Entity
 public class Component {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(nullable = false)
     private String name;
     private String description;
@@ -21,7 +21,7 @@ public class Component {
     private BigDecimal price;
     private boolean status;
     @Column(name = "life_time",nullable = false)
-    private int lifeTime;
+    private Integer lifeTime;
     @Column(name = "manufacture_date")
     private Date manufactureDate;
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
