@@ -17,6 +17,7 @@ public class Flight {
     private Integer duration;
     @Column(name = "rate_per_hour")
     private float ratePerHour;
+    @Column(name = "flight_date")
     private Date date;
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id",nullable = false)

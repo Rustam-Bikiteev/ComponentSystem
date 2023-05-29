@@ -23,7 +23,4 @@ public class Aircraft {
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
     private List<Component> components;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "aircraftId")
-    private List<Flight> flights;
-
 }
