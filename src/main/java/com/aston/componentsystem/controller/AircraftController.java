@@ -28,7 +28,7 @@ public class AircraftController {
         aircraftService.saveAircraft(aircraft);
     }
 
-    @DeleteMapping("/aircrafts/{id}")
+    @DeleteMapping("/aircraft/{id}")
     public void deleteAircraft(@PathVariable int id) {
         aircraftService.deleteAircraft(id);
     }
