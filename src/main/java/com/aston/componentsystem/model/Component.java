@@ -33,6 +33,7 @@ public class Component {
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinColumn(name = "warehouse",nullable = false)
     private Warehouse warehouse;
+    //
 
 
 }
