@@ -21,8 +21,7 @@ public class SwaggerConfig {
     @Bean
     public OpenAPI openApi() {
         return new OpenAPI()
-            .info(new Info()
-                .title("Component System"))
-                .addServersItem(new Server().url("https://componentsystem-production.up.railway.app"));
+                .info(new Info()
+                        .title("Component System"));
     }
 }

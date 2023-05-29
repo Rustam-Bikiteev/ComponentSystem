@@ -14,6 +14,7 @@ public class Warehouse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer quantity;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "warehouse")
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "component_id")
     private List<Component> components;
 }

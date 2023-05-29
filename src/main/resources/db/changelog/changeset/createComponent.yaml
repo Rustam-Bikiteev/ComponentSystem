@@ -29,7 +29,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: isInstalled
+                  name: is_installed
                   type: VARCHAR(255)
                   constraints:
                     nullable: false
@@ -74,7 +74,7 @@ databaseChangeLog:
                   name: price
                   value: "12500"
               - column:
-                  name: isInstalled
+                  name: is_installed
                   value: "false"
               - column:
                   name: life_time
@@ -98,7 +98,7 @@ databaseChangeLog:
                   name: price
                   value: "7500"
               - column:
-                  name: isInstalled
+                  name: is_installed
                   value: "false"
               - column:
                   name: life_time
@@ -122,7 +122,7 @@ databaseChangeLog:
                   name: price
                   value: "10000"
               - column:
-                  name: isInstalled
+                  name: is_installed
                   value: "false"
               - column:
                   name: life_time
@@ -146,7 +146,7 @@ databaseChangeLog:
                   name: price
                   value: "8000"
               - column:
-                  name: isInstalled
+                  name: is_installed
                   value: "false"
               - column:
                   name: life_time
@@ -170,7 +170,7 @@ databaseChangeLog:
                   name: price
                   value: "75000"
               - column:
-                  name: isInstalled
+                  name: is_installed
                   value: "false"
               - column:
                   name: life_time
@@ -194,7 +194,7 @@ databaseChangeLog:
                   name: price
                   value: "250000"
               - column:
-                  name: isInstalled
+                  name: is_installed
                   value: "false"
               - column:
                   name: life_time
