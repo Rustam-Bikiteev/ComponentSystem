@@ -10,7 +10,7 @@ CREATE TABLE component
     is_installed     BOOLEAN,
     life_time        INTEGER                                  NOT NULL,
     manufacture_date TIMESTAMP WITHOUT TIME ZONE,
-    aircraft_id      INTEGER                                  NOT NULL,
+    aircraft_id      INTEGER,
     CONSTRAINT pk_component PRIMARY KEY (id)
 );
 

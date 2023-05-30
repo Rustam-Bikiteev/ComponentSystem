@@ -25,11 +25,7 @@ public class Component {
     private Integer lifeTime;
     @Column(name = "manufacture_date")
     private Date manufactureDate;
-    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "aircraft_id",nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aircraft_id")
     private Aircraft aircraftId;
-
-
-
-
 }

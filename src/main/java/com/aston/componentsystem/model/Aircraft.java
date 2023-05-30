@@ -22,5 +22,4 @@ public class Aircraft {
     private boolean isOperating;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "aircraftId")
     private List<Component> components;
-
 }

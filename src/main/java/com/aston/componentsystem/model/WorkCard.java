@@ -21,11 +21,11 @@ public class WorkCard {
     private Date replacementDate;
     @Column(name = "is_done")
     private boolean isDone;
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aircraft_id", nullable = false)
-    private Aircraft aircraftId;
-    @OneToMany(fetch = FetchType.LAZY)
+    private Aircraft aircraft;
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "component_id")
-    private List<Component> components;
+    private List<Component> component;
 
 }

@@ -18,7 +18,12 @@ public class AircraftService {
     }
 
     public List<Aircraft> getAllAircraft() {
-        return aircraftRepository.findAll();
+        Iterable<Aircraft> aircraftIterable = aircraftRepository.findAll();
+        List<Aircraft> aircraftList = new ArrayList<>();
+        for (Aircraft aircraft : aircraftIterable) {
+            aircraftList.add(aircraft);
+        }
+        return aircraftList;
     }
 
     public Aircraft getAircraftById(int id) {
@@ -30,7 +35,14 @@ public class AircraftService {
     }
 
     public void saveAircraft(Aircraft aircraft) {
-        aircraftRepository.save(aircraft);
+        Aircraft creatingAircraft = new Aircraft();
+        creatingAircraft.setSerialNumber(aircraft.getSerialNumber());
+        creatingAircraft.setRegNumber(aircraft.getRegNumber());
+        creatingAircraft.setDescription(aircraft.getDescription());
+        creatingAircraft.setModel(aircraft.getModel());
+        creatingAircraft.setOperating(aircraft.isOperating());
+        creatingAircraft.setComponents(aircraft.getComponents());
+        aircraftRepository.save(creatingAircraft);
     }
 
     public void deleteAircraft(int id) {
