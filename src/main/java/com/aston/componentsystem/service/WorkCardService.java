@@ -3,8 +3,6 @@ package com.aston.componentsystem.service;
 import com.aston.componentsystem.model.WorkCard;
 import com.aston.componentsystem.repository.WorkCardRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +27,13 @@ public class WorkCardService {
     }
 
     public void saveWorkCard(WorkCard workCard) {
-       workCardRepository.save(workCard);
+        WorkCard creatingWorkCard = new WorkCard();
+        creatingWorkCard.setPlannedDate(workCard.getPlannedDate());
+        creatingWorkCard.setReplacementDate(workCard.getReplacementDate());
+        creatingWorkCard.setDone(workCard.isDone());
+        creatingWorkCard.setAircraft(workCard.getAircraft());
+        creatingWorkCard.setComponent(workCard.getComponent());
+        workCardRepository.save(creatingWorkCard);
     }
 
     public void deleteWorkCard(int id) {

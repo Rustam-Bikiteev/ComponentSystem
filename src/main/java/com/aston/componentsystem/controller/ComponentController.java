@@ -18,7 +18,7 @@ public class ComponentController {
         return componentService.getAllComponents();
     }
 
-    @GetMapping("/components/{id}")
+    @GetMapping("/component/{id}")
     public Component getComponentById(@PathVariable int id) {
         return componentService.getComponentById(id);
     }

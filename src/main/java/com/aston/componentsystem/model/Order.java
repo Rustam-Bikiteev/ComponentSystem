@@ -11,6 +11,7 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
+@Table(name = "component_order")
 public class Order {
 
     @Id

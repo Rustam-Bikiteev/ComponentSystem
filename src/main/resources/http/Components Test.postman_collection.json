@@ -1,0 +1,333 @@
+{
+	"info": {
+		"_postman_id": "5a9a3cc5-5eb7-40d9-a677-5bd9d6c57841",
+		"name": "Components Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24921720",
+		"_collection_link": "https://solar-firefly-103064.postman.co/workspace/Team-Workspace~2903d1b3-2db3-4ac9-8f2d-dbfa01d8b2df/collection/24921720-5a9a3cc5-5eb7-40d9-a677-5bd9d6c57841?action=share&creator=24921720&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Authorization",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"somelogin\",\r\n  \"password\": \"somepassword\",\r\n  \"userRole\": {\r\n    \"name\": \"Logistic\",\r\n    \"removed\": true\r\n  },\r\n  \"firstName\": \"Rustam\",\r\n  \"lastName\": \"Bikiteev\",\r\n  \"surName\": \"Arturovich\",\r\n  \"email\": \"rb@gmail.com\",\r\n  \"last_visit\": \"2023-05-29T09:01:35.447Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/auth/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"login\": \"somelogin\",\r\n  \"password\": \"somepassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateAircraft",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"serialNumber\": 896354,\r\n  \"regNumber\": \"VQ-BSQ\",\r\n  \"description\": \"Some descriprion\",\r\n  \"model\": \"Boeing\",\r\n  \"isOperating\" : true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/aircraft",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aircraft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateWorkCard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"plannedDate\": \"2023-05-29T12:49:24.246Z\",\r\n  \"replacementDate\": \"2023-05-29T12:49:24.246Z\",\r\n  \"isDone\": true,\r\n  \"aircraftId\": 1,\r\n  \"componentId\" : 1\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/workCard",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"workCard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateComponent",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Engine\",\r\n  \"description\": \"CFM-56\",\r\n  \"price\": 300000,\r\n  \"isInstalled\": true,\r\n  \"lifeTime\": 15,\r\n  \"manufactureDate\": \"2015-05-29T12:46:33.182Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/component",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"component"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllAircraft",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/aircraft",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aircraft"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllWorkCards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/workCards",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"workCards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAllComponents",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/components",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"components"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAircraftById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/aircraft/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aircraft",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetWorkCardById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/workCard/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"workCard",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetComponentById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/component/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"component",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteAircraft",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/workCard/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"workCard",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteWorkCard",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/aircraft/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"aircraft",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteComponent",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/component/7",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"component",
+						"7"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

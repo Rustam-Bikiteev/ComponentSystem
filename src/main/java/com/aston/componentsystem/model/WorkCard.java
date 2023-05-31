@@ -4,9 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -20,12 +18,12 @@ public class WorkCard {
     private Date plannedDate;
     @Column(name = "replacement_date", nullable = false)
     private Date replacementDate;
-    private boolean status;
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "aircraft_id", nullable = false)
-    private Aircraft aircraftId;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "component_id")
-    private List<Component> components;
-
+    @Column(name = "is_done")
+    private boolean isDone;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "aircraft_id", referencedColumnName = "id", nullable = false)
+    private Aircraft aircraft;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "component_id", referencedColumnName = "id")
+    private Component component;
 }

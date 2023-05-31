@@ -3,8 +3,6 @@ package com.aston.componentsystem.service;
 import com.aston.componentsystem.model.Component;
 import com.aston.componentsystem.repository.ComponentRepository;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +27,15 @@ public class ComponentService {
     }
 
     public void saveComponent(Component component) {
-        componentRepository.save(component);
+        Component creatingComponent = new Component();
+        creatingComponent.setName(component.getName());
+        creatingComponent.setDescription(component.getDescription());
+        creatingComponent.setPrice(component.getPrice());
+        creatingComponent.setInstalled(component.isInstalled());
+        creatingComponent.setLifeTime(component.getLifeTime());
+        creatingComponent.setManufactureDate(component.getManufactureDate());
+        creatingComponent.setAircraft(component.getAircraft());
+        componentRepository.save(creatingComponent);
     }
 
     public void deleteComponent(int id) {

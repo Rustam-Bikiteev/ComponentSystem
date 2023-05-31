@@ -19,7 +19,7 @@ public class Flight {
     private float ratePerHour;
     @Column(name = "flight_date")
     private Date date;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
 
