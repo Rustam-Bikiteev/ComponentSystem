@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 @Entity
 public class Balance {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     private BigDecimal balance;
 
 
