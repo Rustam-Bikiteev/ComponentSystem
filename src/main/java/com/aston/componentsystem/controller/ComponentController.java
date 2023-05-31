@@ -1,7 +1,8 @@
 package com.aston.componentsystem.controller;
 
+import com.aston.componentsystem.dto.ComponentRequestDTO;
+import com.aston.componentsystem.dto.ComponentResponseDTO;
 import com.aston.componentsystem.service.ComponentService;
-import com.aston.componentsystem.model.Component;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,26 +12,25 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ComponentController {
 
-    public final ComponentService componentService;
+    private final ComponentService componentService;
 
     @GetMapping("/components")
-    public List<Component> getAllComponents() {
+    public List<ComponentResponseDTO> getAllComponents() {
         return componentService.getAllComponents();
     }
 
     @GetMapping("/component/{id}")
-    public Component getComponentById(@PathVariable int id) {
+    public ComponentResponseDTO getComponentById(@PathVariable int id) {
         return componentService.getComponentById(id);
     }
 
     @PostMapping("/component")
-    public void saveComponent(@RequestBody Component component) {
-        componentService.saveComponent(component);
+    public void saveComponent(@RequestBody ComponentRequestDTO componentRequestDTO) {
+        componentService.saveComponent(componentRequestDTO);
     }
 
     @DeleteMapping("/component/{id}")
     public void deleteComponent(@PathVariable int id) {
         componentService.deleteComponent(id);
     }
-
 }

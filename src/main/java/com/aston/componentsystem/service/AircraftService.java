@@ -1,48 +1,44 @@
 package com.aston.componentsystem.service;
 
+import com.aston.componentsystem.dto.AircraftRequestDTO;
+import com.aston.componentsystem.dto.AircraftResponseDTO;
 import com.aston.componentsystem.model.Aircraft;
 import com.aston.componentsystem.repository.AircraftRepository;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
+@RequiredArgsConstructor
 public class AircraftService {
 
     private final AircraftRepository aircraftRepository;
+    private final ModelMapper modelMapper;
 
-    public AircraftService(AircraftRepository aircraftRepository) {
-        this.aircraftRepository = aircraftRepository;
+
+
+    public List<AircraftResponseDTO> getAllAircraft() {
+        List<Aircraft> aircraftList = aircraftRepository.findAll();
+        return aircraftList.stream()
+                .map(this::convertToResponseDTO)
+                .collect(Collectors.toList());
     }
 
-    public List<Aircraft> getAllAircraft() {
-        Iterable<Aircraft> aircraftIterable = aircraftRepository.findAll();
-        List<Aircraft> aircraftList = new ArrayList<>();
-        for (Aircraft aircraft : aircraftIterable) {
-            aircraftList.add(aircraft);
-        }
-        return aircraftList;
-    }
-
-    public Aircraft getAircraftById(int id) {
+    public AircraftResponseDTO getAircraftById(int id) {
         Optional<Aircraft> aircraftOptional = aircraftRepository.findById(id);
         if (!aircraftOptional.isPresent()) {
             throw new NullPointerException();
         }
-        return aircraftOptional.get();
+        return convertToResponseDTO(aircraftOptional.get());
     }
 
-    public void saveAircraft(Aircraft aircraft) {
-        Aircraft creatingAircraft = new Aircraft();
-        creatingAircraft.setSerialNumber(aircraft.getSerialNumber());
-        creatingAircraft.setRegNumber(aircraft.getRegNumber());
-        creatingAircraft.setDescription(aircraft.getDescription());
-        creatingAircraft.setModel(aircraft.getModel());
-        creatingAircraft.setOperating(aircraft.isOperating());
-        creatingAircraft.setComponents(aircraft.getComponents());
-        aircraftRepository.save(creatingAircraft);
+    public void saveAircraft(AircraftRequestDTO aircraftRequestDTO) {
+        Aircraft aircraft = convertToEntity(aircraftRequestDTO);
+        aircraftRepository.save(aircraft);
     }
 
     public void deleteAircraft(int id) {
@@ -51,5 +47,13 @@ public class AircraftService {
             throw new NullPointerException();
         }
         aircraftRepository.deleteById(id);
+    }
+
+    private AircraftResponseDTO convertToResponseDTO(Aircraft aircraft) {
+        return modelMapper.map(aircraft, AircraftResponseDTO.class);
+    }
+
+    private Aircraft convertToEntity(AircraftRequestDTO aircraftRequestDTO) {
+        return modelMapper.map(aircraftRequestDTO, Aircraft.class);
     }
 }
