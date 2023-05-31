@@ -20,6 +20,6 @@ public class Aircraft {
     private String description;
     private String model;
     private boolean isOperating;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "aircraftId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "aircraft")
     private List<Component> components;
 }

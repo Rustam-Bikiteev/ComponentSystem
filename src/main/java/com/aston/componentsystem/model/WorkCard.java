@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import java.util.Date;
-import java.util.List;
 
 @Getter
 @Setter
@@ -22,10 +21,9 @@ public class WorkCard {
     @Column(name = "is_done")
     private boolean isDone;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "aircraft_id", nullable = false)
+    @JoinColumn(name = "aircraft_id", referencedColumnName = "id", nullable = false)
     private Aircraft aircraft;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "component_id")
-    private List<Component> component;
-
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "component_id", referencedColumnName = "id")
+    private Component component;
 }

@@ -34,7 +34,7 @@ public class ComponentService {
         creatingComponent.setInstalled(component.isInstalled());
         creatingComponent.setLifeTime(component.getLifeTime());
         creatingComponent.setManufactureDate(component.getManufactureDate());
-        creatingComponent.setAircraftId(component.getAircraftId());
+        creatingComponent.setAircraft(component.getAircraft());
         componentRepository.save(creatingComponent);
     }
 

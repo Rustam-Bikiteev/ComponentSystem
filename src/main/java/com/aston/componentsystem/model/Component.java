@@ -26,6 +26,6 @@ public class Component {
     @Column(name = "manufacture_date")
     private Date manufactureDate;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "aircraft_id")
-    private Aircraft aircraftId;
+    @JoinColumn(name = "aircraft_id", referencedColumnName = "id")
+    private Aircraft aircraft;
 }
