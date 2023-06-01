@@ -34,20 +34,20 @@ public class AircraftService {
         return aircraftOptional.get();
     }
 
-    public void saveAircraft(Aircraft aircraft) {
-        Aircraft creatingAircraft = new Aircraft();
-        creatingAircraft.setSerialNumber(aircraft.getSerialNumber());
-        creatingAircraft.setRegNumber(aircraft.getRegNumber());
-        creatingAircraft.setDescription(aircraft.getDescription());
-        creatingAircraft.setModel(aircraft.getModel());
-        creatingAircraft.setOperating(aircraft.isOperating());
-        creatingAircraft.setComponents(aircraft.getComponents());
-        aircraftRepository.save(creatingAircraft);
-    }
+//    public void saveAircraft(Aircraft aircraft) {
+//        Aircraft creatingAircraft = new Aircraft();
+//        creatingAircraft.setSerialNumber(aircraft.getSerialNumber());
+//        creatingAircraft.setRegNumber(aircraft.getRegNumber());
+//        creatingAircraft.setDescription(aircraft.getDescription());
+//        creatingAircraft.setModel(aircraft.getModel());
+//        creatingAircraft.setOperating(aircraft.isOperating());
+//       // creatingAircraft.setComponents(aircraft.getComponents());
+//        aircraftRepository.save(creatingAircraft);
+//    }
 
     public void deleteAircraft(int id) {
         Optional<Aircraft> aircraft = aircraftRepository.findById(id);
-        if (!aircraft.isPresent()) {
+        if (aircraft.isEmpty()) {
             throw new NullPointerException();
         }
         aircraftRepository.deleteById(id);

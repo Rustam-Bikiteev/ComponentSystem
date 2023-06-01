@@ -1,18 +1,26 @@
 package com.aston.componentsystem.service;
 
+import com.aston.componentsystem.model.Aircraft;
 import com.aston.componentsystem.model.Component;
+import com.aston.componentsystem.repository.AircraftRepository;
 import com.aston.componentsystem.repository.ComponentRepository;
+import io.swagger.v3.oas.annotations.Parameter;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
+@Slf4j
+@RequiredArgsConstructor
 public class ComponentService {
-    private final ComponentRepository componentRepository;
 
-    public ComponentService(ComponentRepository componentRepository) {
-        this.componentRepository = componentRepository;
-    }
+    private final ComponentRepository componentRepository;
+    private final AircraftRepository aircraftRepository;
 
     public List<Component> getAllComponents() {
         return componentRepository.findAll();
@@ -26,21 +34,17 @@ public class ComponentService {
         return componentOptional.get();
     }
 
-    public void saveComponent(Component component) {
-        Component creatingComponent = new Component();
-        creatingComponent.setName(component.getName());
-        creatingComponent.setDescription(component.getDescription());
-        creatingComponent.setPrice(component.getPrice());
-        creatingComponent.setInstalled(component.isInstalled());
-        creatingComponent.setLifeTime(component.getLifeTime());
-        creatingComponent.setManufactureDate(component.getManufactureDate());
-        creatingComponent.setAircraft(component.getAircraft());
-        componentRepository.save(creatingComponent);
+    public void saveComponent(@Validated Component component, @Parameter(description = "Id Aircraft") Integer id) {
+        Aircraft aircraft = aircraftRepository.findById(id).get();
+        aircraft.addingComponent(component);
+        component.setAircraft(aircraft);
+        componentRepository.save(component);
+        log.info("Method name: saveComponent {Добавление к конкретному Aircraft component} " + id + "Aircraft");
     }
 
     public void deleteComponent(int id) {
         Optional<Component> component = componentRepository.findById(id);
-        if (!component.isPresent()) {
+        if (component.isEmpty()) {
             throw new NullPointerException();
         }
         componentRepository.deleteById(id);
