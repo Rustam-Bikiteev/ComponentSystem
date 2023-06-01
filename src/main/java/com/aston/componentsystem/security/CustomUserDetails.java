@@ -1,6 +1,7 @@
 package com.aston.componentsystem.security;
 import com.aston.componentsystem.model.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,6 +11,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @RequiredArgsConstructor
+@Slf4j
 public class CustomUserDetails implements UserDetails {
 
     private final User user;
@@ -17,6 +19,7 @@ public class CustomUserDetails implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         String roleAuthority = user.getRoles().stream().findFirst().get().toString();
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority(roleAuthority);
+        log.info("Роли загружены для пользователя: {}", user.getLogin());
         return Collections.singleton(authority);
 
     }
