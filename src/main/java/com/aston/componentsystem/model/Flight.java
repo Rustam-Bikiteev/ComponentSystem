@@ -11,14 +11,15 @@ import java.util.Date;
 @Entity
 public class Flight {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
     @Column(nullable = false)
-    private int duration;
+    private Integer duration;
     @Column(name = "rate_per_hour")
     private float ratePerHour;
+    @Column(name = "flight_date")
     private Date date;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "aircraft_id",nullable = false)
     private Aircraft aircraftId;
 
