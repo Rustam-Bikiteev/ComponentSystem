@@ -31,7 +31,8 @@ public class ComponentController {
 
     @PostMapping("/component/{idAircraft}")
     public void saveComponent(@RequestBody Component component,
-                              @PathVariable(value = "idAircraft")@Parameter(description = "Присоединение житали к самолету") Integer idAircraft) {
+                              @PathVariable(value = "idAircraft")
+                              @Parameter(description = "Присоединение component к Aircraft") Integer idAircraft) {
         componentService.saveComponent(component,idAircraft);
     }
 
