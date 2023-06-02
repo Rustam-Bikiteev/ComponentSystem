@@ -14,6 +14,7 @@ import java.util.List;
 @Entity
 @ToString
 public class Aircraft {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

@@ -24,10 +24,10 @@ public class AircraftController {
         return aircraftService.getAircraftById(id);
     }
 
-//    @PostMapping("/aircraft")
-//    public void saveAircraft(@RequestBody Aircraft aircraft) {
-//        aircraftService.saveAircraft(aircraft);
-//    }
+    @PostMapping("/aircraft")
+    public void saveAircraft(@RequestBody Aircraft aircraft) {
+        aircraftService.saveAircraft(aircraft);
+    }
 
     @DeleteMapping("/aircraft/{id}")
     public void deleteAircraft(@PathVariable int id) {

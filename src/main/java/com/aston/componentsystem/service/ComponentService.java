@@ -28,18 +28,18 @@ public class ComponentService {
 
     public Component getComponentById(int id) {
         Optional<Component> componentOptional = componentRepository.findById(id);
-        if (!componentOptional.isPresent()) {
+        if (componentOptional.isEmpty()) {
             throw new NullPointerException();
         }
         return componentOptional.get();
     }
 
-    public void saveComponent(@Validated Component component, @Parameter(description = "Id Aircraft") Integer id) {
+    public void saveComponent(@Validated Component component,  Integer id) {
         Aircraft aircraft = aircraftRepository.findById(id).get();
         aircraft.addingComponent(component);
         component.setAircraft(aircraft);
         componentRepository.save(component);
-        log.info("Method name: saveComponent {Добавление к конкретному Aircraft component} " + id + "Aircraft");
+        log.info("Method name: saveComponent {Addition to specific Aircraft component} " + id + "Aircraft");
     }
 
     public void deleteComponent(int id) {
