@@ -8,6 +8,7 @@ import com.aston.componentsystem.repository.UserRepository;
 import com.aston.componentsystem.repository.UserRoleRepository;
 import com.aston.componentsystem.security.JwtGenerator;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -24,6 +25,7 @@ import java.util.Collections;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Slf4j
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
@@ -35,6 +37,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDto loginDto){
+        log.info("Получен запрос на вход для пользователя: {}", loginDto.getLogin());
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         loginDto.getLogin(),
@@ -46,6 +49,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
+        log.info ("Получен запрос на регистрацию для пользователя: {}", registerDto.getLogin());
         if (userRepository.existsByLogin(registerDto.getLogin())) {
             return ResponseEntity.badRequest().body("user with this login already exists!");
         }

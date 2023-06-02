@@ -1,20 +1,27 @@
 package com.aston.componentsystem.model;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
-public class Warehouse {
+@NoArgsConstructor
+@Table(name = "component_order")
+public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer quantity;
-    @OneToMany(fetch = FetchType.LAZY)
+    private int component_quantity;
+    @OneToMany
     @JoinColumn(name = "component_id")
     private List<Component> components;
 }
+
+
+
