@@ -30,7 +30,7 @@ public class WorkCardService {
 
     public WorkCard getWorkCardById(int id) {
         Optional<WorkCard> workCardOptional = workCardRepository.findById(id);
-        if (!workCardOptional.isPresent()) {
+        if (workCardOptional.isEmpty()) {
             throw new NullPointerException();
         }
         return workCardOptional.get();
