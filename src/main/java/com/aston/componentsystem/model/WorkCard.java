@@ -1,11 +1,16 @@
 package com.aston.componentsystem.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import java.util.Date;
 
@@ -23,14 +28,12 @@ public class WorkCard {
     @Column(name = "is_done")
     private boolean isDone;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "aircraft_id", referencedColumnName = "id")
     private Aircraft aircraft;
 
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "component_id", referencedColumnName = "id")
-    @JsonIgnore
     private Component component;
 
     public WorkCard(Integer id, Date plannedDate, Date replacementDate, boolean isDone) {
@@ -50,6 +53,8 @@ public class WorkCard {
             ", plannedDate=" + plannedDate +
             ", replacementDate=" + replacementDate +
             ", isDone=" + isDone +
+            ", aircraft=" + aircraft +
+            ", component=" + component +
             '}';
     }
 }
