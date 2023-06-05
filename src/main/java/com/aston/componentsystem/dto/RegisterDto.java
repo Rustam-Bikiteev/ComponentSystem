@@ -24,7 +24,6 @@ public class RegisterDto {
     @NotBlank
     private String password;
 
-    @NotNull
     private UserRole userRole;
 
     @NotBlank
