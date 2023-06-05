@@ -1,6 +1,5 @@
 package com.aston.componentsystem.controller;
 
-import com.aston.componentsystem.model.Aircraft;
 import com.aston.componentsystem.service.AircraftService;
 import com.aston.componentsystem.service.ComponentService;
 import com.aston.componentsystem.model.Component;
@@ -16,7 +15,6 @@ import java.util.List;
 public class ComponentController {
 
     public final ComponentService componentService;
-    private final AircraftService aircraftService;
 
     @GetMapping("/components")
     public List<Component> getAllComponents() {
@@ -25,7 +23,6 @@ public class ComponentController {
 
     @GetMapping("/component/{id}")
     public Component getComponentById(@PathVariable int id) {
-        Aircraft aircraft = aircraftService.getAircraftById(id);
         return componentService.getComponentById(id);
     }
 

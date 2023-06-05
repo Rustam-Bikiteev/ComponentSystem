@@ -49,7 +49,7 @@ public class Component {
     private Date manufactureDate;
 
     @JsonIgnore
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinColumn(name = "aircraft_id", referencedColumnName = "id")
     private Aircraft aircraft;
 

@@ -28,21 +28,14 @@ public class AircraftService {
 
     public Aircraft getAircraftById(int id) {
         Optional<Aircraft> aircraftOptional = aircraftRepository.findById(id);
-        if (!aircraftOptional.isPresent()) {
+        if (aircraftOptional.isEmpty()) {
             throw new NullPointerException();
         }
         return aircraftOptional.get();
     }
 
     public void saveAircraft(Aircraft aircraft) {
-        Aircraft creatingAircraft = new Aircraft();
-        creatingAircraft.setSerialNumber(aircraft.getSerialNumber());
-        creatingAircraft.setRegNumber(aircraft.getRegNumber());
-        creatingAircraft.setDescription(aircraft.getDescription());
-        creatingAircraft.setModel(aircraft.getModel());
-        creatingAircraft.setOperating(aircraft.isOperating());
-      creatingAircraft.setComponents(aircraft.getComponents());
-        aircraftRepository.save(creatingAircraft);
+        aircraftRepository.save(aircraft);
     }
 
     public void deleteAircraft(int id) {
