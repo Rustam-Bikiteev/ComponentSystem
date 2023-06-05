@@ -53,7 +53,6 @@ public class User  {
     @Column(name = "sur_name", nullable = false)
     private String surName;
 
-
     @Column(name = "email", nullable = false)
     private String email;
 

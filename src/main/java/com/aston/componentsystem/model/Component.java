@@ -1,38 +1,57 @@
 package com.aston.componentsystem.model;
-import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
+@ToString
 public class Component {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
+
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
-    @Column(nullable = false)
+
+    @Column(name = "price")
     private BigDecimal price;
-    private boolean status;
-    @Column(name = "life_time",nullable = false)
+
+    @Column(name = "is_installed")
+    private boolean isInstalled;
+
+    @Column(name = "life_time")
     private Integer lifeTime;
+
     @Column(name = "manufacture_date")
     private Date manufactureDate;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "aircraft_id",nullable = false)
-    private Aircraft aircraftId;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "workCard",nullable = false)
-    private WorkCard workCard;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "warehouse",nullable = false)
-    private Warehouse warehouse;
+
+    @JsonIgnore
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "aircraft_id", referencedColumnName = "id")
+    private Aircraft aircraft;
 
 
 }
